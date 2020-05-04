@@ -1,0 +1,12 @@
+python generate_raw_data_only_raw.py --input_dir /data3/ExDark/ExDark_data_all_png/Bicycle    --result_dir /data4/ExDark_data_CycleISP/Bicycle
+python generate_raw_data_only_raw.py --input_dir /data3/ExDark/ExDark_data_all_png/Boat       --result_dir /data4/ExDark_data_CycleISP/Boat
+python generate_raw_data_only_raw.py --input_dir /data3/ExDark/ExDark_data_all_png/Bottle     --result_dir /data4/ExDark_data_CycleISP/Bottle
+python generate_raw_data_only_raw.py --input_dir /data3/ExDark/ExDark_data_all_png/Bus        --result_dir /data4/ExDark_data_CycleISP/Bus
+python generate_raw_data_only_raw.py --input_dir /data3/ExDark/ExDark_data_all_png/Car        --result_dir /data4/ExDark_data_CycleISP/Car
+python generate_raw_data_only_raw.py --input_dir /data3/ExDark/ExDark_data_all_png/Cat        --result_dir /data4/ExDark_data_CycleISP/Cat
+python generate_raw_data_only_raw.py --input_dir /data3/ExDark/ExDark_data_all_png/Chair      --result_dir /data4/ExDark_data_CycleISP/Chair
+python generate_raw_data_only_raw.py --input_dir /data3/ExDark/ExDark_data_all_png/Cup        --result_dir /data4/ExDark_data_CycleISP/Cup
+python generate_raw_data_only_raw.py --input_dir /data3/ExDark/ExDark_data_all_png/Dog        --result_dir /data4/ExDark_data_CycleISP/Dog
+python generate_raw_data_only_raw.py --input_dir /data3/ExDark/ExDark_data_all_png/Motorbike  --result_dir /data4/ExDark_data_CycleISP/Motorbike
+python generate_raw_data_only_raw.py --input_dir /data3/ExDark/ExDark_data_all_png/People     --result_dir /data4/ExDark_data_CycleISP/People
+python generate_raw_data_only_raw.py --input_dir /data3/ExDark/ExDark_data_all_png/Table      --result_dir /data4/ExDark_data_CycleISP/Table

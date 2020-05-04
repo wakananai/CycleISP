@@ -66,6 +66,7 @@ with torch.no_grad():
         padh = data[2]
         padw = data[3]
         ## Convert clean rgb image to clean raw image
+        print(rgb_gt.shape)
         raw_gt = model_rgb2raw(rgb_gt)       ## raw_gt is in RGGB format
         raw_gt = torch.clamp(raw_gt,0,1)
         #raw_noisy = torch.zeros_like(raw_gt).cuda()
