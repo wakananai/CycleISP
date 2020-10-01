@@ -2,9 +2,9 @@ import torch
 import numpy as np
 from skimage.measure.simple_metrics import compare_psnr
 import pickle
-import lycon
+# import lycon
 from skimage.measure import compare_ssim
-
+import cv2
 
 def is_numpy_file(filename):
     return any(filename.endswith(extension) for extension in [".npy"])
@@ -26,18 +26,19 @@ def load_dict(filename_):
 def load_pkl(filename_):
     with open(filename_, 'rb') as f:
         ret_dict = pickle.load(f)
-    return ret_dict    
+    return ret_dict
 
 def save_dict(dict_, filename_):
     with open(filename_, 'wb') as f:
-        pickle.dump(dict_, f)    
+        pickle.dump(dict_, f)
 
 def load_npy(filepath):
     img = np.load(filepath)
     return img
 
 def load_img(filepath):
-    img = lycon.load(filepath)
+    # img = lycon.load(filepath)
+    img = cv2.imread(filepath)[:,:,::-1]
     img = img.astype(np.float32)
     img = img/255.
     return img
@@ -65,7 +66,7 @@ def batch_SSIM(img, imclean):
 
 
 def unpack_raw(im):
-    bs,chan,h,w = im.shape 
+    bs,chan,h,w = im.shape
     H, W = h*2, w*2
     img2 = torch.zeros((bs,H,W))
     img2[:,0:H:2,0:W:2]=im[:,0,:,:]
@@ -80,7 +81,7 @@ def pack_raw(im):
     H = img_shape[0]
     W = img_shape[1]
     ## R G G B
-    out = np.concatenate((im[0:H:2,0:W:2,:], 
+    out = np.concatenate((im[0:H:2,0:W:2,:],
                        im[0:H:2,1:W:2,:],
                        im[1:H:2,0:W:2,:],
                        im[1:H:2,1:W:2,:]), axis=2)
@@ -91,7 +92,7 @@ def pack_raw_torch(im):
     H = img_shape[0]
     W = img_shape[1]
     ## R G G B
-    out = torch.cat((im[0:H:2,0:W:2,:], 
+    out = torch.cat((im[0:H:2,0:W:2,:],
                        im[0:H:2,1:W:2,:],
                        im[1:H:2,0:W:2,:],
                        im[1:H:2,1:W:2,:]), dim=2)

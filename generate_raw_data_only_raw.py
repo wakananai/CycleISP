@@ -20,7 +20,7 @@ from networks.cycleisp import Rgb2Raw
 from dataloaders.data_rgb import get_rgb_data
 from utils.noise_sampling import random_noise_levels_dnd, random_noise_levels_sidd, add_noise
 import utils
-import lycon
+# import lycon
 import cv2
 import glob
 import math
@@ -81,7 +81,8 @@ min_crop_size = 32
 with torch.no_grad():
     for path in tqdm(img_list):
         filename = os.path.basename(path)
-        img = lycon.load(path)
+        # img = lycon.load(path)
+        img = cv2.imread(path)[:,:,::-1]
         img = img.astype(np.float32)
         img = img/255.
         img_h, img_w, _ = img.shape
@@ -122,7 +123,8 @@ with torch.no_grad():
 
         try:
             print(os.path.join(args.result_dir, 'png', filename[:-4]+'.png'))
-            lycon.save(os.path.join(args.result_dir, 'png', filename[:-4]+'.png'),(clean_unpacked*255).astype(np.uint8))
+            # lycon.save(os.path.join(args.result_dir, 'png', filename[:-4]+'.png'),(clean_unpacked*255).astype(np.uint8))
+            cv2.imwrite(os.path.join(args.result_dir, 'png', filename[:-4]+'.png'),(clean_unpacked*255).astype(np.uint8))
             # cv2.imwrite(args.result_dir+'png/clean/'+filename[:-4]+'.png',(clean_unpacked*255).astype(np.uint8))
         except cv2.error as e:
             print(filename)
